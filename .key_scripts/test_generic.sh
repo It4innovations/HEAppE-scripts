@@ -9,3 +9,4 @@ do
 	sleep 30s
 done
 echo "some result" >> resultFile.txt
+exit 0
