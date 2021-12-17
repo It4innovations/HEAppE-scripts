@@ -19,7 +19,7 @@ if ! grep -q -w "${conv_pub_key}" ${auth_keys_file}; then
 	pubkey=$(cat ${temp_file})
 	#rm -f ${temp_file}
 
-	keyline="command=\"~/.key_script/remote-cmd3.sh ${jobid}\",no-pty,no-port-forwarding,no-agent-forwarding,no-X11-forwarding ${conv_pub_key} key-temp-added-$(date +"%Y-%m-%d_%H-%M-%S")";
+	keyline="command=\"~/.key_scripts/remote-cmd3.sh ${jobid}\",no-pty,no-port-forwarding,no-agent-forwarding,no-X11-forwarding ${conv_pub_key} key-temp-added-$(date +"%Y-%m-%d_%H-%M-%S")";
 	
 	#keyline="${conv_pub_key} dhi-temp-added-$(date +"%Y-%m-%d_%H-%M-%S")";
 	echo "${keyline}" >> ${auth_keys_file};
