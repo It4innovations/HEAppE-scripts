@@ -4,8 +4,13 @@ RUN useradd -rm -d /home/heappeclient -s /bin/bash -g root -G sudo -u 1001 heapp
 RUN echo 'heappeclient:pass' | chpasswd
 WORKDIR /home/heappeclient
 
+# Install Git
+RUN apt-get update && apt-get install -y git
+
 COPY .key_scripts/ ./.key_scripts/
 COPY .local_hpc_scripts/ ./.local_hpc_scripts/
+RUN chmod +x ./.key_scripts/*
+RUN chmod +x ./.local_hpc_scripts/*
 COPY .ssh/ ./.ssh/
 RUN apt-get update && apt-get install -y openssh-server
 RUN apt-get install jq -y
