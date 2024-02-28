@@ -9,7 +9,7 @@ if "${shared_accounts_pool_mode}"; then
     acl="750"
 fi
 
-if "${heappe_execution_dir}"; then
+if [ ! -d "$heappe_execution_dir" ]; then
     mkdir -p "${heappe_execution_dir}"
     chmod -R 770 "${heappe_execution_dir%%/*}"
 fi
