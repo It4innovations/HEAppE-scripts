@@ -9,12 +9,13 @@ if "${shared_accounts_pool_mode}"; then
     acl="750"
 fi
 
-if [ ! -d "$heappe_execution_dir" ]; then
-    mkdir -p "${heappe_execution_dir}"
-    chmod -R 770 "${heappe_execution_dir%%/*}"
+current_base_path="${storage_path}/${heappe_execution_dir}"
+if [ ! -d "${current_base_path}" ]; then
+     mkdir -p "${current_base_path}"
+     chmod -R 770 "${storage_path}/${heappe_execution_dir%%/*}"
 fi
 
-current_dir="${storage_path}/${heappe_execution_dir}/${job_execution_dir}"
+current_dir="${current_base_path}/${job_execution_dir}"
 if mkdir -m "${acl}" -p "${current_dir}"; then
     echo "Created directory $current_dir with ACL $acl."
     exit 0
